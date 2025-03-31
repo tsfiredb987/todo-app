@@ -3,7 +3,6 @@ testig.txt
 # 忽略 目錄/ 中所有文件
 node_modules/
 target/
-test/
 # 忽略所有 .log 文件
 *.log
 # 忽略所有 .md 文件
