@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // 如果要撰寫 SASS 的話，可透過以下方式引入 SASS 樣式。
 // @import "~bootstrap/scss/bootstrap";
-import { Navbar, Container, FormControl, InputGroup, Button } from 'react-bootstrap';
+import { Navbar, Container, FormControl, InputGroup, Button, Image } from 'react-bootstrap';
 
 function Trash() {
   return <></>
@@ -37,7 +37,10 @@ function fetchTodos() {
 function TodoItem(props) {
   return (
     <InputGroup key={props.id}>
-      <InputGroup.Checkbox checked={props.completed} />
+      <InputGroup.Checkbox 
+        checked={props.completed}
+        onChange={props.onToggle} 
+      />
       <FormControl
         value={props.title}
         style={{
@@ -61,9 +64,9 @@ function App() {
       <Navbar className="bg-body-tertiary">
         <Container>
           <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="..\img\shark.png"
+            <img 
+              alt="none"
+              src={require('./img/shark.png')}
               width="30"
               height="30"
               className="d-inline-block align-top"
