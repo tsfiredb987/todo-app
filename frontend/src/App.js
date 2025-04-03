@@ -2,14 +2,18 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [todos, setTodos] = useState([]); // 待辦事項陣列
-  const [input, setInput] = useState(''); // 輸入框內容
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
 
   const addTodo = () => {
-    if (input.trim()) { // 避免空輸入
+    if (input.trim()) {
       setTodos([...todos, input]);
       setInput('');
     }
+  };
+
+  const deleteTodo = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
   };
 
   return (
@@ -25,7 +29,9 @@ function App() {
       </div>
       <ul>
         {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+          <li key={index}>
+            {todo} <button onClick={() => deleteTodo(index)}>刪除</button>
+          </li>
         ))}
       </ul>
     </div>
