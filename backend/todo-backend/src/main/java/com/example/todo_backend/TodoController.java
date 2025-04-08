@@ -21,4 +21,20 @@ public class TodoController {
         todos.add(todo);
         return todo;
     }
+
+    @PutMapping("/{id}")
+    public Todo updateTodo(@PathVariable Long id, @RequestBody Todo updatedTodo) {
+        for (Todo todo : todos) {
+            if (todo.getId().equals(id)) {
+                todo.setTask(updatedTodo.getTask());
+                return todo;
+            }
+        }
+        return null; // 或拋出異常
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTodo(@PathVariable Long id) {
+        todos.removeIf(todo -> todo.getId().equals(id));
+    }
 }
