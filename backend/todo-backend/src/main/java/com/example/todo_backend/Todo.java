@@ -1,8 +1,19 @@
 package com.example.todo_backend;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Todo {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String task;
+
+    // 無參建構函數（JPA要求）
+    public Todo() {}
 
     public Todo(Long id, String task) {
         this.id = id;
